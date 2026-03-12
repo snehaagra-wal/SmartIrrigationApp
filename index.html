@@ -1,0 +1,193 @@
+<html>
+<head>
+    <title>Intelligent Watering</title>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body id="background">
+
+    <nav class="navbar bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h2>Intelligent Watering</h2></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Predictions</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sensors</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Soil Moisture</a></li>
+                            <li><a class="dropdown-item" href="#">DHT11</a></li>
+                            <li><a class="dropdown-item" href="#">Raindrop</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Past Data</a></li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <section id="content">
+        <section id="cards" class="container">
+            <div class="card" style="width: 18rem;">
+                <img src="https://img.freepik.com/premium-photo/globe-earth-with-high-temperature-background_268269-89.jpg" class="card-img-top" alt="...">
+                <div id="c1" class="card-body">
+                    <h5 class="card-title">Temperature</h5>
+                    <h1><div id="temp">0</div></h1>
+                    <a href="https://economictimes.indiatimes.com/news/how-to/what-are-heat-waves-el-nino-and-how-does-it-affect-agriculture-and-your-pocket/articleshow/99069251.cms?from=mdr" class="btn btn-dark">Read More</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://media.istockphoto.com/id/696110880/photo/soil-in-hand-for-planting.jpg?s=612x612&w=0&k=20&c=NjU6bqPhg_8xt62m7Yq8jZURe41P000GV5tFskrvA2k=" class="card-img-top" alt="...">
+                <div id="c2" class="card-body">
+                    <h5 class="card-title">Soil Moisture</h5>
+                    <h1><div id="moisture">0</div></h1>
+                    <a href="https://www.drought.gov/topics/soil-moisture" class="btn btn-dark">Read More</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://img.freepik.com/premium-photo/agriculture-rain-crop_87720-96759.jpg" class="card-img-top" alt="...">
+                <div id="c3" class="card-body">
+                    <h5 class="card-title">Raindrop</h5>
+                    <h2><div id="rainfall">0</div></h2>
+                    <a href="https://www.deccanherald.com/india/karnataka/rain-shortfall-destroys-crops-upends-farmers-lives-2717239" class="btn btn-dark">Read More</a>
+                </div>
+            </div>
+
+            <!-- Updated Pressure card with buttons -->
+            <div class="card" style="width: 18rem;">
+                <img src="https://img.freepik.com/premium-photo/smart-agriculture-setup-with-iot-sensors-monitoring-soil-moisture-crop-health-solid-color-background-4k-ultra-hd_964851-116921.jpg" class="card-img-top" alt="...">
+                <div id="c4" class="card-body">
+                    <h5 class="card-title">Select Crop Category</h5>
+                    <button id="cat1-btn" class="btn btn-primary">CAT 1</button>
+                    <button id="cat2-btn" class="btn btn-secondary">CAT 2</button>
+                    <button id="cat3-btn" class="btn btn-success">CAT 3</button>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div id="c4" class="card-body">
+                    <h5 class="card-title">Weather Forecast</h5>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Enter Location:</label>
+                        <input type="text" id="location" class="form-control" placeholder="City Name">
+                    </div>
+                    <button id="check-weather-btn" class="btn btn-primary">Check Weather</button>
+                    <div id="weather-result" class="mt-3">
+                        <p id="rain-status"></p>
+                        <p id="watering-advice"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCU-Bdb3pb_iKEZS9JkqAZ5-jiUoW1Rshk",
+            authDomain: "irrigation-4991d.firebaseapp.com",
+            databaseURL: "https://irrigation-4991d-default-rtdb.firebaseio.com",
+            projectId: "irrigation-4991d",
+            storageBucket: "irrigation-4991d.appspot.com",
+            messagingSenderId: "450200498376",
+            appId: "1:450200498376:web:06d719ac2544cc0c2fb5fd",
+            measurementId: "G-VTN1LGNK1J"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const rootRef = firebase.database().ref();
+
+        // Update the UI with data from Firebase
+        rootRef.on('value', function(snapshot) {
+            var data = snapshot.val();
+            document.getElementById('temp').innerText = data.Temp;
+            document.getElementById('moisture').innerText = data.Moisture;
+            document.getElementById('rainfall').innerText = data.Rain;
+        });
+
+        // Function to save the selected category as integer in Firebase
+        function saveCategory(category) {
+            const userSelectionRef = firebase.database().ref('cropCategory');
+            userSelectionRef.set(category);
+        }
+
+        // Add event listeners for the buttons
+        document.getElementById('cat1-btn').addEventListener('click', function() {
+            saveCategory(1); // Send integer 1 for CAT 1
+        });
+        document.getElementById('cat2-btn').addEventListener('click', function() {
+            saveCategory(2); // Send integer 2 for CAT 2
+        });
+        document.getElementById('cat3-btn').addEventListener('click', function() {
+            saveCategory(3); // Send integer 3 for CAT 3
+        });
+        // OpenWeather API Configuration
+        const apiKey = 'e41a56c606f47d2415bb50a54190030c'; // Get your API key from OpenWeather
+
+        // Function to fetch weather data
+        async function fetchWeather(location) {
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`);
+            const data = await response.json();
+            return data;
+        }
+
+        // Function to check if it will rain today in the evening
+        function checkRainTodayEvening(forecast) {
+            let rainExpected = false;
+            const today = new Date().getDate();
+
+            forecast.list.forEach(item => {
+                const forecastDate = new Date(item.dt * 1000);
+                const forecastDay = forecastDate.getDate();
+                const forecastHour = forecastDate.getHours();
+
+                // Check if the forecast is for today and between 5 PM to 8 PM
+                if (forecastDay === today && forecastHour >= 17 && forecastHour <= 20) {
+                    if (item.weather.some(w => w.main === "Rain")) {
+                        rainExpected = true;
+                    }
+                }
+            });
+
+            return rainExpected;
+        }
+
+        // Event listener for "Check Weather" button
+        document.getElementById('check-weather-btn').addEventListener('click', async () => {
+            const location = document.getElementById('location').value;
+            const weatherData = await fetchWeather(location);
+
+            if (weatherData.cod === '200') {
+                const willRain = checkRainTodayEvening(weatherData);
+                const rainStatus = document.getElementById('rain-status');
+                const wateringAdvice = document.getElementById('watering-advice');
+
+                if (willRain) {
+                    rainStatus.innerText = 'Rain is expected this evening.';
+                    wateringAdvice.innerText = 'Reduce the amount of water to be released for crops.';
+                    // alert('Alert: Rain is expected this evening! Do not overwater the crops.');
+                } else {
+                    rainStatus.innerText = 'No rain expected this evening.';
+                    wateringAdvice.innerText = 'Proceed with regular watering for the crops.';
+                }
+            } else {
+                alert('Location not found. Please enter a valid city name.');
+            }
+        });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
