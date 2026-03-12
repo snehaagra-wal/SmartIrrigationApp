@@ -1,0 +1,176 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #0d6501;
+}
+
+.navbar h2 {
+    color: white;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.nav-link {
+    color: white !important;
+    font-size: 1.1rem;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.btn-outline-success {
+    color: white;
+    border-color: #00c851;
+}
+
+/* Background and section styling */
+#background {
+    width: 100%;
+    background: url('https://www.checkatrade.com/blog/wp-content/uploads/2020/10/irrigation-system-cost-per-zone.jpg') no-repeat center center;
+    background-size: cover;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+}
+#content{
+    padding-top: 6em;
+    padding-bottom: 3em;
+}
+
+#background h1, #background h2 {
+    font-family: 'Luckiest Guy', sans-serif;
+    color: rgb(6, 4, 130);
+}
+
+#cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+}
+
+/* Card styling */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #003366;
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card h1, .card h2 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Button styling inside cards */
+.card a {
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+    background-color: #0056b3;
+}
+
+/* New buttons for CAT categories with vibrant colors */
+#c4 .btn {
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+#cat1-btn {
+    background-color: #ff6b6b; /* Vibrant red */
+}
+
+#cat2-btn {
+    background-color: #4caf50; /* Fresh green */
+}
+
+#cat3-btn {
+    background-color: #ffca28; /* Golden yellow */
+}
+
+#cat1-btn:hover {
+    background-color: #d64d4d;
+}
+
+#cat2-btn:hover {
+    background-color: #388e3c;
+}
+
+#cat3-btn:hover {
+    background-color: #f4b400;
+}
+
+/* Align text properly inside the buttons */
+.btn {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer section */
+footer {
+    background-color: #003366;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #00c851;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #00e676;
+    text-decoration: underline;
+}
