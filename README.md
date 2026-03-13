@@ -9,7 +9,7 @@ WhatsApp Image 2026-03-13 at 12.38.03 (1)
 #Cloud Data Synchronization: Uses Firebase as a real-time database to log temperature, humidity, and soil moisture levels, allowing for remote monitoring.<br>
 ![Image](https://github.com/user-attachments/assets/fbfad5b5-4aaf-4aa1-a064-936cc51762b1)
 #Self-Optimizing Output: The ESP32 processes sensor data locally to decide the exact duration the relay (water pump) should stay active, making it a fully autonomous unit.<br>
-#Hardware requirements<br>
+# Hardware requirements<br>
 #ESP32 MicrocontrollerThe brain of the project; handles Wi-Fi, sensors, and logic.<br>
 #Soil Moisture SensorMeasures the volumetric water content in the soil.<br>
 #DHT11 SensorMonitors ambient Temperature and Humidity.<br>
@@ -17,7 +17,7 @@ WhatsApp Image 2026-03-13 at 12.38.03 (1)
 #Relay Module (5V/12V)Acts as an electronic switch to turn the Water Pump ON/OFF.<br>
 #Jumper Wires & PowerFacilitates connections and provides stable voltage to the circuit<br>
 
-Software & Tech Stack<br>
+# Software & Tech Stack<br>
 Firmware: C++ (using the Arduino IDE).<br>
 <img width="600" height="300" alt="Image" src="https://github.com/user-attachments/assets/f687ef7d-3f1e-49f2-af6f-abbd5bceace9" />
 
