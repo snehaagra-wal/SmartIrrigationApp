@@ -1,7 +1,7 @@
 # Crop-Age-Soil-specific-Weather-Driven-Self-optimizing-IoT-Irrigation-System
-1.Overview<br>
+# 1.Overview<br>
 Traditional irrigation often leads to significant water wastage and crop damage due to over-watering or under-watering caused by manual monitoring and a lack of real-time environmental data. This project solves these issues by using an ESP32-based IoT framework that automates water delivery based on live soil moisture levels, crop-specific requirements, and real-time weather forecasts via API integration.<br>
-2. Key Features<br>
+# 2. Key Features<br>
 Crop-Specific Logic: The system is programmed with categories (e.g., High Water vs. Low Water requirements), adjusting its moisture threshold automatically based on the selected plant type.<br>
 WhatsApp Image 2026-03-13 at 12.38.03 (1)
 #Weather-Adaptive Intelligence: By connecting to a Weather API, the system can predict rain. If rain is forecasted, it cancels the scheduled irrigation to save water and prevent soil erosion.<br>
@@ -27,17 +27,17 @@ Database: Firebase Realtime Database (using the Firebase ESP Client library).<br
 
 External Integration: OpenWeatherMap API<br>
 
-4. System Architecture (Workflow)<br>
+# 4. System Architecture (Workflow)<br>
 Sensing: The sensors collect raw analog and digital data (Moisture, Temp, Humidity).<br>
 
 Processing: The ESP32 connects to Wi-Fi and fetches the local weather forecast via an API.<br>
 
-5. Usage & Applications
-Precision Agriculture: Optimizing water usage for large-scale farms with varied crop types.
+# 5. Usage & Applications
+Precision Agriculture: Optimizing water usage for large-scale farms with varied crop types.<br>
 
-Urban Gardening: Automated plant care for homeowners and rooftop gardens.
+Urban Gardening: Automated plant care for homeowners and rooftop gardens.<br>
 
-Smart Greenhouses: Maintaining a strict micro-climate for sensitive botanical species.
+Smart Greenhouses: Maintaining a strict micro-climate for sensitive botanical species.<br>
 
 Decision Making:<br>
 
@@ -49,9 +49,3 @@ Cloud Sync: All parameters are pushed to Firebase in real-time.<br>
 
 Output: The Relay Module triggers the water pump according to the crop category’s specific needs.<br>
 ![Image](https://github.com/user-attachments/assets/843405df-7770-4068-8953-c3524eeafa7c)
-5. Usage & Applications<br>
-Precision Agriculture: Optimizing water usage for large-scale farms with varied crop types.<br>
-
-Urban Gardening: Automated plant care for homeowners and rooftop gardens.<br>
-
-Smart Greenhouses: Maintaining a strict micro-climate for sensitive botanical species.<br>
