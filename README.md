@@ -46,7 +46,7 @@ If Soil Moisture > Threshold OR Forecast == Rain → Pump OFF.<br>
 Cloud Sync: All parameters are pushed to Firebase in real-time.<br>
 
 Output: The Relay Module triggers the water pump according to the crop category’s specific needs.<br>
-
+![Image](https://github.com/user-attachments/assets/843405df-7770-4068-8953-c3524eeafa7c)
 5. Usage & Applications<br>
 Precision Agriculture: Optimizing water usage for large-scale farms with varied crop types.<br>
 
