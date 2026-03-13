@@ -19,7 +19,7 @@ WhatsApp Image 2026-03-13 at 12.38.03 (1)
 
 Software & Tech Stack<br>
 Firmware: C++ (using the Arduino IDE).<br>
-
+<img width="600" height="300" alt="Image" src="https://github.com/user-attachments/assets/f687ef7d-3f1e-49f2-af6f-abbd5bceace9" />
 Web Dashboard: HTML and CSS (for the user interface and data visualization).<br>
 
 Database: Firebase Realtime Database (using the Firebase ESP Client library).<br>
