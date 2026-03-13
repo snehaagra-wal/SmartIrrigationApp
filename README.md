@@ -30,6 +30,13 @@ Sensing: The sensors collect raw analog and digital data (Moisture, Temp, Humidi
 
 Processing: The ESP32 connects to Wi-Fi and fetches the local weather forecast via an API.<br>
 
+5. Usage & Applications
+Precision Agriculture: Optimizing water usage for large-scale farms with varied crop types.
+
+Urban Gardening: Automated plant care for homeowners and rooftop gardens.
+
+Smart Greenhouses: Maintaining a strict micro-climate for sensitive botanical species.
+
 Decision Making:<br>
 
 If Soil Moisture < Threshold AND Forecast != Rain → Pump ON.<br>
