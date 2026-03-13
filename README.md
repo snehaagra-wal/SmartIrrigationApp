@@ -1,3 +1,4 @@
+#Crop-Age-Soil-specific-Weather-Driven-Self-optimizing-IoT-Irrigation-System
 1.Overview<br>
 Traditional irrigation often leads to significant water wastage and crop damage due to over-watering or under-watering caused by manual monitoring and a lack of real-time environmental data. This project solves these issues by using an ESP32-based IoT framework that automates water delivery based on live soil moisture levels, crop-specific requirements, and real-time weather forecasts via API integration.<br>
 2. Key Features<br>
