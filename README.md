@@ -1,37 +1,48 @@
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app
+#overview
+#Traditional irrigation often leads to significant water wastage and crop damage due to over-watering or under-watering caused by manual monitoring and a lack of real-time environmental data. This project solves these issues by using an ESP32-based IoT framework that automates water delivery based on live soil moisture levels, crop-specific requirements, and real-time weather forecasts via API integration.
+#2. Key Features
+#Crop-Specific Logic: The system is programmed with categories (e.g., High Water vs. Low Water requirements), adjusting its moisture threshold automatically based on the selected plant type.
 
-1. Install dependencies
+#Weather-Adaptive Intelligence: By connecting to a Weather API, the system can predict rain. If rain is forecasted, it cancels the scheduled irrigation to save water and prevent soil erosion.
 
-2. Start the app
-In the output, you'll find options to open the app in a
+#Cloud Data Synchronization: Uses Firebase as a real-time database to log temperature, humidity, and soil moisture levels, allowing for remote monitoring.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+#Self-Optimizing Output: The ESP32 processes sensor data locally to decide the exact duration the relay (water pump) should stay active, making it a fully autonomous unit.
+#Hardware requirements
+#ESP32 MicrocontrollerThe brain of the project; handles Wi-Fi, sensors, and logic.
+#Soil Moisture SensorMeasures the volumetric water content in the soil.
+#DHT11 SensorMonitors ambient Temperature and Humidity.
+#Rain Detection SensorProvides instant alerts for precipitation on-site.
+#Relay Module (5V/12V)Acts as an electronic switch to turn the Water Pump ON/OFF.
+#Jumper Wires & PowerFacilitates connections and provides stable voltage to the circuit
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Software & Tech Stack
+Firmware: C++ (using the Arduino IDE).
 
-## Get a fresh project
+Web Dashboard: HTML and CSS (for the user interface and data visualization).
 
-When you're ready, run:
+Database: Firebase Realtime Database (using the Firebase ESP Client library).
 
-```bash
-npm run reset-project
-```
+External Integration: OpenWeatherMap API
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+4. System Architecture (Workflow)
+Sensing: The sensors collect raw analog and digital data (Moisture, Temp, Humidity).
 
-## Learn more
+Processing: The ESP32 connects to Wi-Fi and fetches the local weather forecast via an API.
 
-To learn more about developing your project with Expo, look at the following resources:
+Decision Making:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+If Soil Moisture < Threshold AND Forecast != Rain → Pump ON.
 
-## Join the community
+If Soil Moisture > Threshold OR Forecast == Rain → Pump OFF.
 
-Join our community of developers creating universal apps.
+Cloud Sync: All parameters are pushed to Firebase in real-time.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Output: The Relay Module triggers the water pump according to the crop category’s specific needs.
+
+5. Usage & Applications
+Precision Agriculture: Optimizing water usage for large-scale farms with varied crop types.
+
+Urban Gardening: Automated plant care for homeowners and rooftop gardens.
+
+Smart Greenhouses: Maintaining a strict micro-climate for sensitive botanical species.
