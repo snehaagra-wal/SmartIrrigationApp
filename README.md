@@ -45,6 +45,8 @@ If Soil Moisture < Threshold AND Forecast != Rain → Pump ON.<br>
 
 If Soil Moisture > Threshold OR Forecast == Rain → Pump OFF.<br>
 
+Direct Link - https://smart-irrigation-app-wine.vercel.app/
+
 Cloud Sync: All parameters are pushed to Firebase in real-time.<br>
 ![Image](https://github.com/user-attachments/assets/522d19ef-3f3d-4344-8660-a8c5221d6fc0)
 
